@@ -52,6 +52,17 @@ cd $CARLAROOT
 
 The dataset used to train the models in the paper can be downloaded [at this link](https://drive.google.com/file/d/14-o8XZtqJnRRCPqX3gz-LJuOgBORcbXT/view?usp=sharing).
 
+## Some question and answers about generating the dataset
+
+### 1. Scenario Runner Error
+
+- Please set the timeout 2 to 10 or 20.
+
+### 2. About lenth of the dataset
+
+- Maybe 200 episode is enough for training.
+
+
 ## Generating the CARLA dataset
 
 Alternatively, data can be generated in CARLA via the `scenario_runner.py` script:
