@@ -128,7 +128,7 @@ optimizer.params.save_before_train=True
 ```
 
 > 此外还应该修改一些文件和内容，如添加这个返回meta_list的类型。
->
+
 
 ## Evaluating a trained CfO model
 
@@ -139,11 +139,11 @@ python scenario_runner.py \
 --enable-inference \
 --enable-control \
 --enable-recording \
---checkpoint_path [absolute path to model checkpoint] \
---model_path [absolute path to model folder] \
+--checkpoint_path /home/shy/Desktop/ContingenciesFromObservations-main/Model/esp_train_results/2021-01/01-24-20-31-06_Left_Turn_Dataset_precog.bijection.social_convrnn.SocialConvRNN_ \
+--model_path /home/shy/Desktop/ContingenciesFromObservations-main/Model/esp_train_results/2021-01/01-24-20-31-06_Left_Turn_Dataset_precog.bijection.social_convrnn.SocialConvRNN_ \
 --replan 4 \
 --planner_type 0 \
---scenario 0 \
+--scenario 1 \
 --location 0
 ```
 
