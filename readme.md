@@ -84,7 +84,7 @@ python Utils prepare_data.py
 ```
 This will convert the episode data objects into json file per frame, and store them in Data/JSON_output folder.
 
-## CfO model 
+## CfO模型 
 
 The CfO model/architecture code is contained in the [precog](precog) folder, and is based on the [PRECOG repository](https://github.com/nrhine1/precog) with several key differences:
 
@@ -92,7 +92,7 @@ The CfO model/architecture code is contained in the [precog](precog) folder, and
 2. The social features also include velocity and acceleration information of the agents (see [precog/bijection/social_convrnn.py](precog/bijection/social_convrnn.py)).
 3. The plotting script visualizes samples in a fixed set of coordinates with LiDAR overlayed on top (see [precog/plotting/plot.py](precog/plotting/plot.py)). 
 
-## Training the CfO model
+## 训练CfO 模型
 
 Organize the json files into the following structure:
 ```md
@@ -130,7 +130,14 @@ optimizer.params.save_before_train=True
 > 此外还应该修改一些文件和内容，如添加这个返回meta_list的类型。
 
 
-## Evaluating a trained CfO model
+## 评估训练好的Cfo模型
+
+> 其实只需要运行里面的test.sh即可
+
+- 意外地发现作者设置了他训练好的模型位置，那么可以直接用他训练好的模型生成一个测试的视频
+- 原理主要是，你需要先运行CARLA，然后使用Scenario Runner和他做互动，相机记录鸟瞰图和此刻的位置
+- 然后把这个图像再导出成视频
+
 
 To evaluate a trained model in the CARLA simulator, run:
 ```bash
