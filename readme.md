@@ -9,8 +9,8 @@
 1. Serve as the accompanying code for ICRA 2021 paper: Contingencies from Observations.
 2. A framework for running scenarios with PRECOG models in CARLA.
 
-## Installing CARLA
-
+## 安装CARLA
+> 这个比较容易一些，直接去官方下载realse版本后，再把这个送到服务器上解压。
 This repository requires CARLA 0.9.8. Please navigate to carla.org to download the correct packages, or do the following:
 ```bash
 # Downloads hosted binaries
@@ -31,8 +31,8 @@ CarlaUE4     CHANGELOG   Engine  Import           LICENSE                       
 CarlaUE4.sh  Dockerfile  HDMaps  ImportAssets.sh  Manifest_DebugFiles_Linux.txt  README     VERSION
 ```
 
-## Setup
-
+## 安装
+> 这个直接安装就可以了，非常顺利
 ```bash
 conda create -n precog python=3.6.6
 conda activate precog
@@ -48,33 +48,35 @@ cd $CARLAROOT
 ./CarlaUE4.sh
 ```
 
-## Downloading the CARLA dataset
+## 下载CARLA数据集
+> 这个可以去官方下载，注意的是超车数据一共是200个作为训练集。
 
 The dataset used to train the models in the paper can be downloaded [at this link](https://drive.google.com/file/d/14-o8XZtqJnRRCPqX3gz-LJuOgBORcbXT/view?usp=sharing).
 
-## Some question and answers about generating the dataset
+## 一些关于生成数据集需要注意的点
 
-### 1. Scenario Runner Error
+### 1. Scenario Runner错误
 
-- Please set the timeout 2 to 10 or 20.
+- 把相关代码中的`set_timeout`的时间2s设置为10s或者20s，这样确保了可以和客户端进行通讯.
 
-### 2. About lenth of the dataset
+### 2. 关于需要生成数据集的长度
 
-- Maybe 200 episode is enough for training.
+- 也许200个episode的长度就够用了
 
 
-## Generating the CARLA dataset
+## 生成超车数据集的代码
 
 Alternatively, data can be generated in CARLA via the `scenario_runner.py` script:
 ```bash
 cd Experiment
 python scenario_runner.py \
 --enable-collecting \
---scenario 0 \
+--scenario 1 \
 --location 0  
 ```
 Episode data will be stored to Experiment/Data folder.
 
+> 在这里我们需要右键`EXPERIMENT`并且将其设置为根目录，然后右键运行文件就可以了。
 Then run:
 ```bash
 cd Experiment
@@ -105,6 +107,7 @@ Custom_Dataset
 ```
 
 Modify relevant precog/conf files to insert correct absolute paths.
+> 这里需要注意的是，一些文件少写了右侧的单引号，需要补全。
 ```md
 Custom_Dataset.yaml
 esp_infer_config.yaml
@@ -112,7 +115,7 @@ esp_train_config.yaml
 shared_gpu.yaml
 sgd_optimizer.yaml # set training hyperparameters
 ```
-
+> 这里应该都是没问题的，注意运行前需要`source precog_env.sh`
 Then run:
 ```bash
 export CUDA_VISIBLE_DEVICES=0;
