@@ -127,6 +127,9 @@ optimizer.params.plot_before_train=True \
 optimizer.params.save_before_train=True
 ```
 
+> 此外还应该修改一些文件和内容，如添加这个返回meta_list的类型。
+>
+
 ## Evaluating a trained CfO model
 
 To evaluate a trained model in the CARLA simulator, run:
